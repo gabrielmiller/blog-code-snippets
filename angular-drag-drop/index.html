@@ -7,14 +7,56 @@
 </head>
 <body ng-app="demoApp">
     <div ng-controller="demoCtrl as demo">
-        <ul class="sort-holder">
-            <li
-                class="draggable"
-                ng-bind="item.label"
-                ng-repeat="(index, item) in demo.draggables track by item.id"
-                ">
-            </li>
-        </ul>
+        <div class="bucket-parent">
+            <h2>Bucketing</h2>
+            <div>
+                <ul>
+                    <li class="not-draggable">Bucket 1</li>
+                    <li
+                        class="draggable"
+                        ng-bind="item.label"
+                        ng-if="item.category === 1"
+                        ng-repeat="(index, item) in demo.bucketables track by item.id"
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li class="not-draggable">Bucket 2</li>
+                    <li
+                        class="draggable"
+                        ng-bind="item.label"
+                        ng-if="item.category === 2"
+                        ng-repeat="(index, item) in demo.bucketables track by item.id"
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li class="not-draggable">Bucket 3</li>
+                    <li
+                        class="draggable"
+                        ng-bind="item.label"
+                        ng-if="item.category === 3"
+                        ng-repeat="(index, item) in demo.bucketables track by item.id"
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sort-parent">
+            <h2>Sorting</h2>
+            <ul class="sort-holder">
+                <li
+                    class="draggable"
+                    ng-bind="item.label"
+                    ng-repeat="(index, item) in demo.sortables | orderBy:item.number track by item.id"
+                    >
+                </li>
+            </ul>
+        </div>
         <a href="#" ng-click="demo.dump()">Dump</a>
     </div>
 </body>
