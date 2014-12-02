@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Angular Drag and Drop</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="demoCtrl.js"></script>
+</head>
+<body ng-app="demoApp">
+    <div ng-controller="demoCtrl as demo">
+        <ul class="sort-holder">
+            <li
+                class="draggable"
+                ng-bind="item.label"
+                ng-repeat="(index, item) in demo.draggables track by item.id"
+                ">
+            </li>
+        </ul>
+        <a href="#" ng-click="demo.dump()">Dump</a>
+    </div>
+</body>
+</html>
