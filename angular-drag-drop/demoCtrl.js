@@ -5,6 +5,8 @@
         .controller('demoCtrl', ['$scope', demoCtrl]);
 
     function demoCtrl() {
+        var that = this;
+
         var bucketables = [
             {
                 category: 1,
@@ -32,6 +34,10 @@
                 label: "Khamsa"
             }
         ];
+
+        var newBucketable = {
+            name: ""
+        };
 
         var sortables = [
             {
@@ -61,8 +67,21 @@
             }
         ];
 
+        function addBucketable(name) {
+            console.log("adding bucketable", name);
+            var newBucketableIndex = that.bucketables.length + 1;
+            console.log(newBucketableIndex);
+            var newItem = {
+                category: 0,
+                id: newBucketableIndex,
+                label: name
+            };
+            console.log(newItem);
+            //that.bucketables.push(newItem);
+        }
+
         function dump() {
-            console.log(this);
+            console.log(that);
         }
 
         function swapElements() {
@@ -70,12 +89,14 @@
         }
 
         // Methods
-        this.dump = dump;
-        this.swapElements = swapElements;
+        that.addBucketable = addBucketable;
+        that.dump = dump;
+        that.swapElements = swapElements;
 
         // Variables
-        this.bucketables = bucketables;
-        this.sortables = sortables;
+        that.bucketables = bucketables;
+        that.newBucketable = newBucketable;
+        that.sortables = sortables;
     }
 
 })();
