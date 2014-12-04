@@ -15,16 +15,17 @@
                 <ul class="bucket-0">
                     <li class="title">Un-bucketed items</li>
                     <li class="form-input">
-                        <form ng-submit="demo.addBucketable(demo.newBucketable.name)">
-                            <input type="text" ng-bind="demo.newBucketable.name" placeholder="New Item"></input>
+                        <form ng-submit="demo.addBucketable(demo.newBucketable.label)">
+                            <input type="text" ng-model="demo.newBucketable.label" placeholder="New Item"></input>
                             <button type="submit">Add</button>
                         </form>
                     </li>
                     <li
                         class="draggable"
-                        ng-bind="item.label"
                         ng-if="item.category === 0"
                         ng-repeat="(index, item) in demo.bucketables track by item.id">
+                        <span ng-bind="item.label"></span>
+                        <i class="fa fa-times" ng-click="demo.deleteBucketable(index)"></i>
                     </li>
                 </ul>
                 <ul class="bucket-1">
