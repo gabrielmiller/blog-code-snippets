@@ -1,0 +1,134 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/user-interface";
+
+$dark-gray: #4d4d4d;
+$gray: #868686;
+$light-gray: #ababab;
+
+$red: #cc2222;
+
+$light-blue: #ededab;
+$light-green: #edabed;
+$light-yellow: #edabab;
+
+body {
+    background-color: white;
+}
+
+.bucket-parent {
+
+    &.in-drag {
+        ul.droppable {
+            background-color: transparent;
+            border-style: dashed;
+
+            &.drop-target {
+                background-color: $light-yellow;
+            }
+
+            &:after {
+                content: "Drop here";
+                left: 70px;
+                position: absolute;
+                top: 40%;
+            }
+        }
+
+        li {
+            visibility: hidden;
+        }
+    }
+
+    ul {
+        @include border-radius(4);
+
+        border: 2px solid $dark-gray;
+        display: inline-block;
+        list-style-type: none;
+        padding: 4px;
+        position: relative;
+        vertical-align: top;
+        width: 200px;
+
+        &.bucket-0 {
+            background-color: white;
+            border-color: transparent;
+        }
+
+        &.bucket-1 {
+            background-color: $light-green;
+        }
+
+        &.bucket-2 {
+            background-color: $light-yellow;
+        }
+
+        &.bucket-3 {
+            background-color: $light-blue;
+        }
+    }
+
+    li {
+        @include border-radius(2);
+        @include user-select(none);
+
+        border-style: solid;
+        border-width: 2px;
+        margin: 2px;
+        overflow: hidden;
+        padding: 6px 20px 6px 6px;
+        position: relative;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &.draggable {
+            background-color: $light-gray;
+            border-color: $gray;
+            cursor: pointer;
+        }
+
+        &.form-input {
+            border-color: transparent;
+            padding: 0;
+        }
+
+        &.title {
+            border-color: transparent;
+            color: black;
+            text-decoration: underline;
+            padding-left: 0;
+        }
+
+        span {
+            margin: 0 0 0 2px;
+        }
+
+        .fa-reorder {
+            padding: 2px;
+            margin: 2px 0 0 0;
+        }
+
+        .fa-times {
+            position: absolute;
+            right: 6px;
+            top: 8px;
+
+            &:hover {
+                color: $red;
+            }
+        }
+    }
+
+    button, input[type=text] {
+        margin: 0;
+        padding: 4px;
+    }
+
+    input[type=text] {
+        width: 120px;
+    }
+
+    button {
+        width: 50px;
+    }
+}

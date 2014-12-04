@@ -24,42 +24,42 @@
                         class="draggable"
                         ng-if="item.category === 0"
                         ng-repeat="(index, item) in demo.bucketables track by item.id">
+                        <i class="fa fa-reorder"></i>
                         <span ng-bind="item.label"></span>
                         <i class="fa fa-times" ng-click="demo.deleteBucketable(index)"></i>
                     </li>
                 </ul>
-                <ul class="bucket-1">
+                <ul class="bucket-1 droppable">
                     <li class="title">Bucket 1</li>
                     <li
                         class="draggable"
-                        ng-bind="item.label"
                         ng-if="item.category === 1"
-                        ng-repeat="(index, item) in demo.bucketables track by item.id"
-                        >
+                        ng-repeat="(index, item) in demo.bucketables track by item.id">
+                        <i class="fa fa-reorder"></i>
+                        <span ng-bind="item.label"></span>
+                        <i class="fa fa-times" ng-click="demo.deleteBucketable(index)"></i>
                     </li>
                 </ul>
-                <ul class="bucket-2">
+                <ul class="bucket-2 droppable">
                     <li class="title">Bucket 2</li>
                     <li
                         class="draggable"
-                        ng-bind="item.label"
                         ng-if="item.category === 2"
-                        ng-repeat="(index, item) in demo.bucketables track by item.id"
-                        >
+                        ng-repeat="(index, item) in demo.bucketables track by item.id">
+                        <i class="fa fa-reorder"></i>
+                        <span ng-bind="item.label"></span>
+                        <i class="fa fa-times" ng-click="demo.deleteBucketable(index)"></i>
                     </li>
                 </ul>
-                <ul class="bucket-3">
+                <ul class="bucket-3 droppable">
                     <li class="title">Bucket 3</li>
-                    <li class="not-draggable">
-                        <i class="fa fa-thumb-tack"></i>
-                        A thing trapped in bucket 3
-                    </li>
                     <li
                         class="draggable"
-                        ng-bind="item.label"
                         ng-if="item.category === 3"
-                        ng-repeat="(index, item) in demo.bucketables track by item.id"
-                        >
+                        ng-repeat="(index, item) in demo.bucketables track by item.id">
+                        <i class="fa fa-reorder"></i>
+                        <span ng-bind="item.label"></span>
+                        <i class="fa fa-times" ng-click="demo.deleteBucketable(index)"></i>
                     </li>
                 </ul>
             </div>
