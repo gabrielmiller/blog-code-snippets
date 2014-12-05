@@ -11,7 +11,7 @@
         that.addBucketable = addBucketable;
         that.deleteBucketable = deleteBucketable;
         that.dump = dump;
-        that.swapElements = swapElements;
+        that.setCategory = setCategory;
 
         // Variables
         that.bucketables = getBucketables();
@@ -115,8 +115,8 @@
             ];
         };
 
-        function swapElements() {
-            console.log("Swapping Elements");
+        function setCategory(index, newCategory) {
+            that.bucketables[index].category = parseInt(newCategory);
         }
     }
 

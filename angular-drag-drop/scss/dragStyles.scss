@@ -7,35 +7,56 @@ $light-gray: #ababab;
 
 $red: #cc2222;
 
-$light-blue: #ededab;
-$light-green: #edabed;
-$light-yellow: #edabab;
+$light-blue: #ababed;
+$light-green: #abedab;
+$light-yellow: #ededab;
 
 body {
     background-color: white;
 }
 
 .bucket-parent {
-
     &.in-drag {
-        ul.droppable {
-            background-color: transparent;
-            border-style: dashed;
+        ul {
+            &.droppable {
+                background-color: white;
+                border-color: $gray;
+                border-style: dashed;
 
-            &.drop-target {
-                background-color: $light-yellow;
+                &.drop-target {
+                    border-color: $dark-gray;
+                    background-color: $light-yellow;
+                }
+
+                &:after {
+                    color: $gray;
+                    content: "Drop here";
+                    left: 70px;
+                    position: absolute;
+                    top: 40%;
+                }
             }
 
-            &:after {
-                content: "Drop here";
-                left: 70px;
-                position: absolute;
-                top: 40%;
-            }
-        }
+            li {
+                pointer-events: none;
 
-        li {
-            visibility: hidden;
+                &.draggable {
+                    background-color: transparent;
+                    border-color: transparent;
+                    color: transparent;
+
+                    &.being-dragged {
+                        background-color: $light-gray;
+                        border-color: $red;
+                        color: black;
+                        pointer-events: all;
+                    }
+                }
+
+                &.title {
+                    color: $gray;
+                }
+            }
         }
     }
 
@@ -85,6 +106,7 @@ body {
             background-color: $light-gray;
             border-color: $gray;
             cursor: pointer;
+            pointer-events: all;
         }
 
         &.form-input {
