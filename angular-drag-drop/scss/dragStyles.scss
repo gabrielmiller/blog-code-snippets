@@ -29,11 +29,15 @@ body {
                 }
 
                 &:after {
-                    color: $gray;
+                    color: $red;
                     content: "Drop here";
                     left: 70px;
                     position: absolute;
                     top: 40%;
+                }
+
+                .fa-times {
+                    display: none;
                 }
             }
 
@@ -51,6 +55,10 @@ body {
                         color: black;
                         pointer-events: all;
                     }
+
+                    .fa-times {
+                        display: none;
+                    }
                 }
 
                 &.title {
@@ -66,6 +74,7 @@ body {
         border: 2px solid $dark-gray;
         display: inline-block;
         list-style-type: none;
+        margin: 4px;
         padding: 4px;
         position: relative;
         vertical-align: top;
@@ -76,16 +85,8 @@ body {
             border-color: transparent;
         }
 
-        &.bucket-1 {
+        &.bucket {
             background-color: $light-green;
-        }
-
-        &.bucket-2 {
-            background-color: $light-yellow;
-        }
-
-        &.bucket-3 {
-            background-color: $light-blue;
         }
     }
 
@@ -119,6 +120,7 @@ body {
             color: black;
             text-decoration: underline;
             padding-left: 0;
+            position: relative;
         }
 
         span {

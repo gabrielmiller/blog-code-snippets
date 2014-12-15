@@ -5,25 +5,26 @@
         .module('demoApp')
         .controller('demoCtrl', demoCtrl);
 
-    function demoCtrl(demoFactory, demoService) {
+    function demoCtrl(demoService) {
         var that = this;
 
         // Methods
         that.addBucketable = demoService.addBucketable;
+        that.addBucket = demoService.addBucket;
         that.deleteBucketable = demoService.deleteBucketable;
+        that.deleteBucket = demoService.deleteBucket;
         that.dump = dump;
         that.setCategory = demoService.setCategory;
 
         // Variables
-        that.bucketables = demoFactory.bucketables;
+        that.bucketables = demoService.bucketables;
+        that.buckets = demoService.buckets;
         that.newBucketable = demoService.newBucketable;
+        that.newBucket = demoService.newBucket;
         that.newSortable = demoService.newSortable;
-        that.sortables = demoFactory.sortables;
+        that.sortables = demoService.sortables;
 
-        function deleteBucketable(index) {
-            that.bucketables.splice(index, 1);
-        }
-
+        // Debugging
         function dump() {
             console.log(that);
         }

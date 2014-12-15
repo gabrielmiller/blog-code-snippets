@@ -8,6 +8,21 @@
     function demoFactory() {
         var that = {};
 
+        that.buckets = [
+            {
+                id: 1,
+                label: "Bucket 1"
+            },
+            {
+                id: 2,
+                label: "Bucket 2"
+            },
+            {
+                id: 3,
+                label: "Bucket 3"
+            }
+        ];
+
         that.bucketables = [
             {   
                 category: 1,
@@ -35,6 +50,18 @@
                 label: "Khamsa"
             }   
         ]; 
+
+        that.newBucketable = {
+            label: ""
+        };
+
+        that.newBucket = {
+            label: ""
+        };
+
+        that.newSortable = {
+            label: ""
+        };
 
         that.sortables = [
             {

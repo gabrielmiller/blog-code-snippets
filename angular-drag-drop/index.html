@@ -2,7 +2,7 @@
 <head>
     <title>Angular Drag and Drop</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="demoCtrl.js"></script>
     <script type="text/javascript" src="demoFactory.js"></script>
@@ -19,8 +19,12 @@
             <h2>Bucketing</h2>
             <div class="bucket-parent">
                 <ul class="bucket-0">
-                    <li class="title">Un-bucketed items</li>
+                    <li class="title">Add buckets/items</li>
                     <li class="form-input">
+                        <form ng-submit="demo.addBucket(demo.newBucket.label)">
+                            <input type="text" ng-model="demo.newBucket.label" placeholder="New Bucket"></input>
+                            <button type="submit">Add</button>
+                        </form>
                         <form ng-submit="demo.addBucketable(demo.newBucketable.label)">
                             <input type="text" ng-model="demo.newBucketable.label" placeholder="New Item"></input>
                             <button type="submit">Add</button>
@@ -40,62 +44,24 @@
                     </li>
                 </ul>
                 <ul
-                    class="bucket-1 droppable"
+                    class="bucket bucket-{{bucket.id}} droppable"
                     drag-and-drop
                     droppable="true"
-                    drop-id="1"
-                    drop-parent=".bucket-1"
-                    on-drop="demo.setCategory(oldId, newId)">
-                    <li class="title">Bucket 1</li>
-                    <li
-                        class="draggable"
-                        drag-and-drop
-                        draggable="true"
-                        drag-parent=".bucket-parent"
-                        drag-id="{{index}}"
-                        ng-if="item.category === 1"
-                        ng-repeat="(index, item) in demo.bucketables track by item.id">
-                        <i class="fa fa-reorder"></i>
-                        <span ng-bind="item.label"></span>
-                        <i class="fa fa-times" ng-click="demo.deleteBucketable(index)"></i>
+                    drop-id="{{bucket.id}}"
+                    drop-parent=".bucket-{{bucket.id}}"
+                    ng-repeat="(bucketIndex, bucket) in demo.buckets"
+                    on-drop="demo.setCategory(dragId, dropId)">
+                    <li class="title">
+                        <span class="title" ng-bind="bucket.label"></span>
+                        <i class="fa fa-times" ng-click="demo.deleteBucket(bucketIndex)"></i>
                     </li>
-                </ul>
-                <ul
-                    class="bucket-2 droppable"
-                    drag-and-drop
-                    droppable="true"
-                    drop-id="2"
-                    drop-parent=".bucket-2"
-                    on-drop="demo.setCategory(oldId, newId)">
-                    <li class="title">Bucket 2</li>
                     <li
                         class="draggable"
                         drag-and-drop
                         draggable="true"
                         drag-parent=".bucket-parent"
                         drag-id="{{index}}"
-                        ng-if="item.category === 2"
-                        ng-repeat="(index, item) in demo.bucketables track by item.id">
-                        <i class="fa fa-reorder"></i>
-                        <span ng-bind="item.label"></span>
-                        <i class="fa fa-times" ng-click="demo.deleteBucketable(index)"></i>
-                    </li>
-                </ul>
-                <ul
-                    class="bucket-3 droppable"
-                    drag-and-drop
-                    droppable="true"
-                    drop-id="3"
-                    drop-parent=".bucket-3"
-                    on-drop="demo.setCategory(oldId, newId)">
-                    <li class="title">Bucket 3</li>
-                    <li
-                        class="draggable"
-                        drag-and-drop
-                        draggable="true"
-                        drag-parent=".bucket-parent"
-                        drag-id="{{index}}"
-                        ng-if="item.category === 3"
+                        ng-if="item.category === bucket.id"
                         ng-repeat="(index, item) in demo.bucketables track by item.id">
                         <i class="fa fa-reorder"></i>
                         <span ng-bind="item.label"></span>
